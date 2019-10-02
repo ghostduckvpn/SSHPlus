@@ -1,0 +1,1 @@
+Instalar squid aqui
