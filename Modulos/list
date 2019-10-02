@@ -118,7 +118,6 @@ clear
 #INICIO AUTOMATICO' > /etc/autostart
 chmod +x /etc/autostart
 }
-#INICIO
 wget -qO- https://raw.githubusercontent.com/twovpsnet/SSHPlus/master/Modulos/versao |sed -n '1 p' |cut -d' ' -f2 > /bin/versao && cat /bin/versao > /home/sshplus
 service ssh restart > /dev/null 2>&1
 [[ $(ps x | grep "bot_plus"|grep -v grep | wc -l) != '0' ]] && {
