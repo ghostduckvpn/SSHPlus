@@ -2,7 +2,6 @@
 echo "$ipdovps" >/etc/IP
 rm -rf /etc/SSHPlus/bot /etc/SSHPlus/ShellBot.sh /etc/SSHPlus/cabecalho /etc/SSHPlus/proxy.py > /dev/null 2>&1
 echo "America/Sao_Paulo" > /etc/timezone
-echo 'crazy' > /usr/lib/sshplus
 ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime > /dev/null 2>&1
 dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1
 [[ ! -d /etc/SSHPlus ]] && mkdir /etc/SSHPlus
@@ -16,7 +15,7 @@ if ps x | grep "bot_plus"|grep -v grep 1>/dev/null 2>/dev/null; then
 fi
 wget -O /etc/ssh/sshd_config https://raw.githubusercontent.com/twossh/vpsmanager/master/scripts/sshd_config
 service ssh restart
-wget https://raw.githubusercontent.com/twossh/SSHPLUS/master/Sistema/addhost.sh -O /bin/addhost > /dev/null 2>&1
+wget https://raw.githubusercontent.com/twovpsnet/SSHPlus/master/Sistema/addhost.sh -O /bin/addhost > /dev/null 2>&1
 chmod +x /bin/addhost
 wget https://raw.githubusercontent.com/twossh/SSHPLUS/master/Sistema/verifatt.sh -O /bin/verifatt > /dev/null 2>&1
 chmod +x /bin/verifatt
@@ -38,7 +37,7 @@ wget https://raw.githubusercontent.com/twossh/SSHPLUS/master/Sistema/remover.sh 
 chmod +x /bin/remover
 wget https://raw.githubusercontent.com/twossh/SSHPLUS/master/Sistema/alterarlimite.sh -O /bin/alterarlimite > /dev/null 2>&1
 chmod +x /bin/alterarlimite
-wget https://raw.githubusercontent.com/twossh/SSHPLUS/master/Sistema/ajuda.sh -O /bin/ajuda > /dev/null 2>&1
+wget https://raw.githubusercontent.com/twovpsnet/SSHPlus/master/Sistema/ajuda.sh -O /bin/ajuda > /dev/null 2>&1
 chmod +x /bin/ajuda
 wget https://raw.githubusercontent.com/twossh/SSHPLUS/master/Sistema/sshmonitor.sh -O /bin/sshmonitor > /dev/null 2>&1
 chmod +x /bin/sshmonitor
@@ -78,6 +77,8 @@ wget https://raw.githubusercontent.com/twossh/SSHPLUS/master/Sistema/limiter.sh 
 chmod +x /bin/limiter
 wget https://raw.githubusercontent.com/twossh/SSHPLUS/master/Sistema/uexpired.sh -O /bin/uexpired > /dev/null 2>&1
 chmod +x /bin/uexpired
+wget https://raw.githubusercontent.com/twossh/SSHPLUS/master/Sistema/droplimiter.sh -O /bin/droplimiter > /dev/null 2>&1
+chmod +x /bin/droplimiter
 wget https://raw.githubusercontent.com/twossh/SSHPLUS/master/Sistema/cabecalho.sh -O /etc/SSHPlus/cabecalho > /dev/null 2>&1
 chmod +x /etc/SSHPlus/cabecalho
 wget https://raw.githubusercontent.com/twossh/SSHPLUS/master/Sistema/bot.sh -O /etc/SSHPlus/bot > /dev/null 2>&1
@@ -117,10 +118,7 @@ clear
 chmod +x /etc/autostart
 }
 #INICIO
-[[ $(crontab -l|grep -c "uexpired") = '0' ]] && (crontab -l 2>/dev/null; echo "0 */6 * * * /bin/uexpired") | crontab -
-[[ $(crontab -l|grep -c "verifatt") = '0' ]] && (crontab -l 2>/dev/null; echo "@daily /bin/verifatt") | crontab -
-[[ $(crontab -l|grep -c "autostart") = '0' ]] && (crontab -l 2>/dev/null; echo "@reboot /etc/autostart") | crontab -
-wget -qO- https://raw.githubusercontent.com/twossh/SSHPLUS/master/Sistema/versao |sed -n '1 p' |cut -d' ' -f2 > /bin/versao && cat /bin/versao > /home/sshplus
+wget -qO- https://raw.githubusercontent.com/twovpsnet/SSHPlus/master/Modulos/versao |sed -n '1 p' |cut -d' ' -f2 > /bin/versao && cat /bin/versao > /home/sshplus
 service ssh restart > /dev/null 2>&1
 [[ $(ps x | grep "bot_plus"|grep -v grep | wc -l) != '0' ]] && {
 [[ ! -e "/etc/SSHPlus/ShellBot.sh" ]] && wget -qO- https://raw.githubusercontent.com/shellscriptx/shellbot/master/ShellBot.sh > /etc/SSHPlus/ShellBot.sh
