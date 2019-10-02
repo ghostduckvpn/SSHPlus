@@ -32,4 +32,5 @@ No status do socks no modo proxy ao alterar o status do mesmo
 • Outras correções e ajustes
 
 DEV @CRAZY_VPN
+
 CANAL OFICIAL: @SSHPLUS
