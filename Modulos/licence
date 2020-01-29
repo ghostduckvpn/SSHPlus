@@ -1,1 +1,1 @@
-by: @crazy_vpn
+Developer: @ghostduck
